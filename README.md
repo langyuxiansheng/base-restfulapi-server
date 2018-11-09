@@ -31,8 +31,6 @@ $ npm run dev # 可执行npm start跳过ESlint检查。
 获取 http://localhost:3000/v1/user/getUserList
 
 
-访问： http://localhost:3000/
-
 调试说明
 --------
 
