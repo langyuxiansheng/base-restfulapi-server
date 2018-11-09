@@ -1,0 +1,6 @@
+build/*.js
+assets/*.js
+src/app.js
+src/middleware
+*.md
+src/config.js

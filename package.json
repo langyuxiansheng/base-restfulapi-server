@@ -1,0 +1,52 @@
+{
+    "name": "base-restfulapi-server",
+    "version": "1.0.0",
+    "description": "base-restfulapi-server是一个基于koa2 RESTful API 风格的node服务器",
+    "author": "狼丶宇先森 <1096432931@qq.com>",
+    "scripts": {
+        "start": "gulp nodemon",
+        "dev": "gulp",
+        "build": "babel src -d dist",
+        "production": "node dist/app.js"
+    },
+    "dependencies": {
+        "blueimp-md5": "^2.10.0",
+        "jsonwebtoken": "^8.1.0",
+        "koa": "^2.3.0",
+        "koa-body": "^4.0.4",
+        "koa-compose": "^4.0.0",
+        "koa-jwt": "^3.2.2",
+        "koa-router": "^7.2.1",
+        "koa-static2": "^0.1.8",
+        "mysql2": "^1.6.1",
+        "nodemailer": "^4.3.0",
+        "promise-mysql": "^3.1.1",
+        "require-directory": "^2.1.1",
+        "sequelize": "^4.16.1"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-plugin-transform-runtime": "^6.22.0",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-stage-2": "^6.24.1",
+        "babel-register": "^6.26.0",
+        "eslint": "^5.8.0",
+        "eslint-config-standard": "^12.0.0",
+        "eslint-friendly-formatter": "^4.0.1",
+        "eslint-plugin-html": "^4.0.1",
+        "eslint-plugin-import": "^2.8.0",
+        "eslint-plugin-node": "^8.0.0",
+        "eslint-plugin-promise": "^4.0.1",
+        "eslint-plugin-standard": "^4.0.0",
+        "gulp": "^3.9.1",
+        "gulp-eslint": "^5.0.0",
+        "gulp-nodemon": "^2.2.1",
+        "koa-logger": "^3.1.0",
+        "mongodb": "^3.1.8",
+        "mongoose": "^5.3.9"
+    },
+    "engines": {
+        "node": ">= 7.8.0",
+        "npm": ">= 4.2.0"
+    }
+}
