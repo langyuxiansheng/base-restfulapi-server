@@ -668,10 +668,8 @@ request.post('/api').form({key:'value'}), function(err,httpResponse,body){ /* ..
 
 --------------------------------------------------------------
 其它说明:
---------------------------------------------------------------
-###特别鸣谢 https://github.com/yi-ge/koa2-API-scaffold  的作者
 
-###参考作者提供的基础框架,再次基于框架新增和修改了一些业务逻辑,因为业务需要,集成了多种数据库(MySQL和MongoDB)
+特别鸣谢 https://github.com/yi-ge/koa2-API-scaffold  的作者,参考作者提供的基础框架,再次基于框架新增和修改了一些业务逻辑,因为业务需要,集成了多种数据库(MySQL和MongoDB)
 --------------------------------------------------------------
 如果有需要用到 redis 的地方 请自行集成
 可以参考 https://itbilu.com/nodejs/npm/EkiI9PG4-.html
