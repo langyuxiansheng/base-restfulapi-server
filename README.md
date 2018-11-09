@@ -25,7 +25,7 @@ $ cd base-restfulapi-server
 $ npm install
 $ npm run dev # 可执行npm start跳过ESlint检查。
 ```
-测试接口  
+测试接口
 
 登陆  http://localhost:3000/v1/user/userLogin
 获取 http://localhost:3000/v1/user/getUserList
@@ -408,7 +408,7 @@ Koa的错误拦截中间件，需要配合上面的插件使用：https://github
 目录结构说明
 ------------
 
-```bash 
+```bash
 .
 ├── README.md				# 项目说明文件
 ├── .babelrc                # Babel 配置文件
@@ -434,7 +434,7 @@ Koa的错误拦截中间件，需要配合上面的插件使用：https://github
 │   │   ├── mongoUtil.js    # MongoDB工具类
 │   │   ├── PluginLoader.js # 插件加载的loader
 │   │   ├── mysql-db.js     # 原生MySQL工具类(不要和 sequelize混用 放这里是给需要的伙伴的)
-│   │   └── sequelize.js    # sequelize 关系型数据库ORM工具  
+│   │   └── sequelize.js    # sequelize 关系型数据库ORM工具
 │   ├── middleware          # 中间件文件夹
 │   │   ├── ErrorRoutesCatch.js # 统一错误处理
 │   │   └── ValidateTools.js # 校验验工具类
@@ -666,17 +666,20 @@ request.post('/api').form({key:'value'}), function(err,httpResponse,body){ /* ..
 1.	创建项目。
 
 
-
-
-
-
-
 --------------------------------------------------------------
 其它说明:
 --------------------------------------------------------------
-#特别鸣谢 https://github.com/yi-ge/koa2-API-scaffold  的作者
+###特别鸣谢 https://github.com/yi-ge/koa2-API-scaffold  的作者
 
-参考作者提供的基础框架,再次基于框架修改了一些业务逻辑,因为业务需要,集成了多种数据库(MySQL和MongoDB)
+###参考作者提供的基础框架,再次基于框架新增和修改了一些业务逻辑,因为业务需要,集成了多种数据库(MySQL和MongoDB)
 --------------------------------------------------------------
 如果有需要用到 redis 的地方 请自行集成
 可以参考 https://itbilu.com/nodejs/npm/EkiI9PG4-.html
+
+--------------------------------------------------------------
+
+如果对你有帮助的话,欢迎star,有问题请在此留言
+
+也可以在github Issues提问 或者直接 联系作者 109643291@qq.com
+
+欢迎加入作者所在的QQ群: 46153838
