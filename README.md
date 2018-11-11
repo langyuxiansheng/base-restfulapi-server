@@ -658,6 +658,8 @@ request.post('/api').form({key:'value'}), function(err,httpResponse,body){ /* ..
 
 更新说明
 --------
+*v1.0.1 2018年11月11日11:44:49
+1. 更新mongoDB工具类 增加输出指定字段和分页查询
 
 *v1.0.0 2018年11月9日10:06:14*
 
