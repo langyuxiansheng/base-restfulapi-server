@@ -17,7 +17,7 @@
 
 开发使用说明
 ------------
-
+ 
 ```
 $ git clone https://github.com/langyuxiansheng/base-restfulapi-server  仓库地址
 
@@ -26,10 +26,53 @@ $ npm install
 $ npm run dev # 可执行npm start跳过ESlint检查。
 ```
 测试接口
-
+```
 登陆  http://localhost:3000/v1/user/userLogin
-获取 http://localhost:3000/v1/user/getUserList
+post 请求 
+参数:
+{
+  "account":"天狼先生",
+  "password":12345
+}
 
+返回 {code:200,data:token:xxx,msg:"success"}
+
+```
+```
+获取 http://localhost:3000/v1/user/getUserList
+get 请求
+返回 {code:200,data:[],msg:"success"}
+```
+```
+get 分页查询  http://localhost:3000/v1/test/getTest?date=2018-11-06&page=5&limit=10
+post 测试  批量和 单个  http://localhost:3000/v1/test/postTest
+参数: 单个 为{},多个为[{}]
+
+```
+```
+post 测试   http://localhost:3000/v1/test/postTest
+参数: 
+单个 为{},
+多个为[{}]
+返回 {code:200,msg:"success"}
+```
+```
+
+put 测试 http://localhost:3000/v1/test/putTest/参数
+如 http://localhost:3000/v1/test/putTest/5bdeaf2231185055507ac3c7
+参数:
+{
+  "username": "拉法基积分",
+  "password": 12153
+}
+返回 {code:200,msg:"success"}
+ 
+```
+```
+delete 请求  http://localhost:3000/v1/test/deleteTest/参数
+如: http://localhost:3000/v1/test/deleteTest/5bdeaf2231185055507ac3c7
+返回 {code:200,msg:"success"}
+```
 
 调试说明
 --------
