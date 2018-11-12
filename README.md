@@ -45,8 +45,6 @@ get 请求
 ```
 ```
 get 分页查询  http://localhost:3000/v1/test/getTest?date=2018-11-06&page=5&limit=10
-post 测试  批量和 单个  http://localhost:3000/v1/test/postTest
-参数: 单个 为{},多个为[{}]
 
 ```
 ```
@@ -55,11 +53,12 @@ post 测试   http://localhost:3000/v1/test/postTest
 单个 为{},
 多个为[{}]
 返回 {code:200,msg:"success"}
-```
-```
 
+```
+```
 put 测试 http://localhost:3000/v1/test/putTest/参数
 如 http://localhost:3000/v1/test/putTest/5bdeaf2231185055507ac3c7
+
 参数:
 {
   "username": "拉法基积分",
