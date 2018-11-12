@@ -686,3 +686,7 @@ request.post('/api').form({key:'value'}), function(err,httpResponse,body){ /* ..
 也可以在github Issues提问 或者直接 联系作者 109643291@qq.com
 
 欢迎加入作者所在的QQ群: 46153838
+
+作者个人网站: http://www.hao2013.cn
+
+CSDN: https://blog.csdn.net/qq_33270001
