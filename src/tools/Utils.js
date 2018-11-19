@@ -1,10 +1,12 @@
 import md5 from 'blueimp-md5';
+import moment from 'moment';
 import UUID from 'uuid';
-import middleware from '../middleware';
+
 import {
     SystemConfig
 } from '../config';
 
+import middleware from '../middleware';
 const {
     ValidateTools
 } = middleware.ValidateTools;
@@ -15,7 +17,20 @@ const validateTools = new ValidateTools();
  */
 class Utils {
 
-    getJwtData(authorization) {
+    /**
+     * 获取mongodb数据库名 今日
+     */
+    GetTableName() {
+        var _today = moment();
+        return "2018_11_09"; /*现在的时间*/
+        // return _today.format('YYYY_MM_DD'); /*现在的时间*/
+    }
+
+    /**
+     * 获取jwt数据
+     * @param {*} authorization
+     */
+    GetJwtData(authorization) {
         if (!authorization) {
             return null;
         }
@@ -24,25 +39,26 @@ class Utils {
             return validate.data;
         } else {
             return null;
+            // return result.authorities();
         }
     }
 
     /**
      * 取随机数
      */
-    getRandomNum() {
+    GetRandomNum() {
         let Min = 10000000;
         let Max = 99999999;
-        var Range = Max - Min;
-        var Rand = Math.random();
+        let Range = Max - Min;
+        let Rand = Math.random();
         return (Min + Math.round(Rand * Range));
     }
 
     /**
      * 获取MD5加密
      */
-    getMd5(str) {
-        return md5(str + 'da7777');
+    GetMd5(Str) {
+        return md5(Str + 'da7777');
     }
 
     /**
@@ -141,6 +157,66 @@ class Utils {
         }
         return arr.length;
     }
+
+    /**
+     * 线性数据转化为树
+     * @param {Object} data 源数据
+     * @param {Object} parentKey 父级id key
+     * @param {childrenKey} childrenKey 子集key
+     * @param {Object} pId 父级标识符
+     */
+    toTree(data, parentKey, childrenKey, pId) {
+        var tree = [];
+        var temp = null;
+        for (let i = 0; i < data.length; i++) {
+            if (data[i][parentKey] == pId) {
+                var obj = data[i];
+                obj.children = [];
+                temp = this.toTree(data, parentKey, childrenKey, data[i][childrenKey]);
+                if (temp.length > 0) {
+                    obj.children = temp;
+                }
+                tree.push(obj);
+            }
+        }
+        return tree;
+    }
+
+    /**
+     * 移除对象中的无效属性
+     * @param obj
+     * @return {*}
+     */
+    removeEmpty(obj) {
+        Object.keys(obj).forEach(function(key) {
+            (obj[key] && typeof obj[key] === 'object') && this.removeEmpty(obj[key]) ||
+                (obj[key] === undefined || obj[key] === null || obj[key] === '') && delete obj[key];
+        });
+        return obj;
+    }
+
+    /**
+     * 深度拷贝
+     * @param {*} obj
+     */
+    deepCloneObject(obj) {
+        let objClone = Array.isArray(obj) ? [] : {};
+        if (obj && typeof obj === 'object') {
+            for (let key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    //判断ojb子元素是否为对象，如果是，递归复制
+                    if (obj[key] && typeof obj[key] === 'object') {
+                        objClone[key] = this.deepCloneObject(obj[key]);
+                    } else {
+                        //如果不是，简单复制
+                        objClone[key] = obj[key];
+                    }
+                }
+            }
+        }
+        return objClone;
+    }
+
 }
 
 module.exports = new Utils();
