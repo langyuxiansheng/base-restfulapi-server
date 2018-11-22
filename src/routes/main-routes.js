@@ -1,31 +1,37 @@
-/**
- * 统一导出
- */
+//主路由文件
 import KoaRouter from 'koa-router';
 import controllers from '../controllers/index.js';
 
 //所有的API接口都以apiv1开头
-const router = new KoaRouter({
-    prefix: '/v1'
-});
-
+const router = new KoaRouter({ prefix: '/v1' });
 const {
-    TestController,
-    UserController,
+    Demos,
+    Users,
+    Login,
+    Admin
 } = controllers;
 
-/* eslint-disable */
 const routers = [{
         url: `/test`,
-        routes: TestController
+        routes: Demos.TestController
     },
     {
         url: `/user`,
-        routes: UserController
+        routes: Users.UserController
     },
+    {
+        url: `/login`,
+        routes: Login.LoginController
+    },
+    {
+        url: `/platform`,
+        routes: Admin.PlatformController
+    },
+    {
+        url: `/permission`,
+        routes: Admin.PermissionController
+    }
 ];
-
-/* eslint-enable */
 
 //挂载路由
 routers.forEach(item => {

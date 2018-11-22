@@ -3,10 +3,7 @@
  * https: //itbilu.com/nodejs/npm/V1PExztfb.html
  */
 import Sequelize from 'sequelize';
-import {
-    DB
-} from '../config';
-
+import { DB } from '../config';
 /**
  * 挂载多个mysql
  */
@@ -23,7 +20,7 @@ DB.relationalConfs.forEach(item => {
         mysqls[`${item.dbName}Util`].authenticate().then(() => {
             console.log(`${item.dbName} 连接成功!`);
         }).catch(err => {
-            console.error(`${item.dbName} 连接出错`, err);
+            throw new Error(`${item.dbName} 连接出错${err}`);
         });
     }
 });

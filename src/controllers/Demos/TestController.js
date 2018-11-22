@@ -1,8 +1,5 @@
 import KoaRouter from 'koa-router';
-import {
-    TestService
-} from '../services';
-
+import { TestService } from '../../services';
 const router = new KoaRouter();
 
 /**

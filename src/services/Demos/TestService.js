@@ -1,8 +1,8 @@
-import result from '../tools/Result';
-import mongoUtil from '../lib/mongoUtil';
+import result from '../../tools/Result';
+import mongoUtil from '../../lib/mongoUtil';
 import {
     testModel
-} from '../models';
+} from '../../models';
 
 /**
  * test TestService
@@ -15,11 +15,31 @@ class TestService {
      * @param {*} ctx
      */
     async getTest({
-        date
+        date,
+        page,
+        limit
     }) {
         try {
-            const res = await mongoUtil.findAll('user', null, '2018-11-05');
-            return result.pageData(null, null, res, res.length, 10, 1);
+            let queryData = {
+                table: 'user',
+                dbName: date,
+                /*  filters: {
+                     username: '11212'
+                 }, */
+                attributes: {
+                    password: 0 //只输出该字段
+                }
+            };
+
+            if (page && limit) {
+                queryData.page = Number(page);
+                queryData.limit = Number(limit);
+            }
+            //分页查询
+            const res = await mongoUtil.findAndCount(queryData);
+            //获取总条数
+            const count = await mongoUtil.getAllCount(queryData);
+            return result.pageData(null, null, res, count, queryData.limit, queryData.page);
         } catch (error) {
             console.log(error);
             return result.failed();
@@ -33,8 +53,8 @@ class TestService {
     async postTest(data) {
         try {
             //user对象模型
-            const model = new testModel.UserModel(data);
-            const res = await mongoUtil.insert('user', model, '2018-11-06');
+            // const model = new testModel.UserModel(data);
+            const res = await mongoUtil.insert('user', data, '2018-11-06');
             if (res > 0) {
                 return result.success();
             } else {

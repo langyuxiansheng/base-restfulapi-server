@@ -4,3 +4,4 @@ src/app.js
 src/middleware
 *.md
 src/config.js
+src/routes/main-routes.js

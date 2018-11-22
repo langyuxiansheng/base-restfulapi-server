@@ -1,17 +1,15 @@
-import result from '../tools/Result';
-import middleware from '../middleware';
-import sequelize from '../lib/sequelize';
-
-const {
-    db1Util
-} = sequelize;
-const userModel = db1Util.import(`../models/userModel`);
-
+import result from '../../tools/Result';
+import middleware from '../../middleware';
 const {
     ValidateTools
 } = middleware.ValidateTools;
-
 const validateTools = new ValidateTools();
+
+// import sequelize from '../lib/sequelize';
+// const {
+//     database1Util
+// } = sequelize;
+// const userModel = database1Util.import(`../models/userModel`);
 
 /**
  * test TestService
@@ -19,19 +17,19 @@ const validateTools = new ValidateTools();
  */
 module.exports = class UserService {
 
-    /**
-     * 用户注册
-     * @param {*} user
-     */
-    async userRegister(user) {
-        try {
-            const res = await userModel.create(user);
-            return result.success(null, res);
-        } catch (error) {
-            console.log(error);
-            return result.failed();
-        }
-    }
+    // /**
+    //  * 用户注册
+    //  * @param {*} user
+    //  */
+    // async userRegister(user) {
+    //     try {
+    //         const res = await userModel.create(user);
+    //         return result.success(null, res);
+    //     } catch (error) {
+    //         console.log(error);
+    //         return result.failed();
+    //     }
+    // }
 
     /**
      * 用户登录

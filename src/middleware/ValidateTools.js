@@ -15,7 +15,8 @@ export class ValidateTools {
      */
     validateJWT(authorities) {
         try {
-            return jwt.verify(authorities, publicKey);
+            console.log(`validateJWT======`, authorities.substr(7));
+            return jwt.verify(authorities.substr(7), publicKey);
         } catch (err) {
             console.log(`JWT验证结果`, err);
             return false;
@@ -39,4 +40,5 @@ export class ValidateTools {
             throw err;
         }
     }
+
 }

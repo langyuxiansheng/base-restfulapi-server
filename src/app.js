@@ -39,7 +39,7 @@ app.use((ctx, next) => {
         secret: publicKey
     }).unless({
         //无需jwt的路由
-        path: [/^\/v1\/user\/userLogin/, /^\/v1\/user\/getUserList/, /^\/v1\/user\/userRegister/, /^\/public/, /^\/assets/]
+        path: [/^\/v1\/login\/aminLogin/, /^\/public/, /^\/assets/]
     }))
     .use(KoaBody({
         multipart: true,

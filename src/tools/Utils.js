@@ -2,14 +2,9 @@ import md5 from 'blueimp-md5';
 import moment from 'moment';
 import UUID from 'uuid';
 
-import {
-    SystemConfig
-} from '../config';
-
+import { SystemConfig } from '../config';
 import middleware from '../middleware';
-const {
-    ValidateTools
-} = middleware.ValidateTools;
+const { ValidateTools } = middleware.ValidateTools;
 const validateTools = new ValidateTools();
 
 /**
@@ -20,33 +15,24 @@ class Utils {
     /**
      * 获取mongodb数据库名 今日
      */
-    GetTableName() {
-        var _today = moment();
-        return "2018_11_09"; /*现在的时间*/
-        // return _today.format('YYYY_MM_DD'); /*现在的时间*/
+    getTableName() {
+        return moment().format('YYYY_MM_DD'); /*现在的时间*/
     }
 
     /**
      * 获取jwt数据
      * @param {*} authorization
      */
-    GetJwtData(authorization) {
-        if (!authorization) {
-            return null;
-        }
+    getJwtData(authorization) {
+        if (!authorization) return null;
         const validate = validateTools.validateJWT(authorization);
-        if (validate) {
-            return validate.data;
-        } else {
-            return null;
-            // return result.authorities();
-        }
+        return validate ? validate.data : null;
     }
 
     /**
      * 取随机数
      */
-    GetRandomNum() {
+    getRandomNum() {
         let Min = 10000000;
         let Max = 99999999;
         let Range = Max - Min;
@@ -57,8 +43,8 @@ class Utils {
     /**
      * 获取MD5加密
      */
-    GetMd5(Str) {
-        return md5(Str + 'da7777');
+    getMd5(Str) {
+        return md5(Str + 'getMd5(Str)');
     }
 
     /**
@@ -171,7 +157,6 @@ class Utils {
         for (let i = 0; i < data.length; i++) {
             if (data[i][parentKey] == pId) {
                 var obj = data[i];
-                obj.children = [];
                 temp = this.toTree(data, parentKey, childrenKey, data[i][childrenKey]);
                 if (temp.length > 0) {
                     obj.children = temp;

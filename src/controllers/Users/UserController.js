@@ -1,7 +1,7 @@
 import KoaRouter from 'koa-router';
-import services from '../services';
+import services from '../../services';
 const router = new KoaRouter();
-const userService = new services.UserService();
+const userService = new services.Users.UserService();
 
 /**
  * UserController
@@ -36,7 +36,7 @@ class UserController {
 
 const {
     userLogin,
-    getUserList,
+    getUserList
     // userRegister
 } = new UserController();
 

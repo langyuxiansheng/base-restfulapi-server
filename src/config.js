@@ -16,50 +16,27 @@ export const System = {
 //数据库配置
 export const DB = {
     relationalConfs: [{
-            DB_type: 'mysql', // 数据库类型
-            dbName: 'db1', //命名为唯一 调用的时候
-            host: '192.168.0.1', // 服务器地址
-            port: 3306, // 数据库端口号
-            username: 'test', // 数据库用户名
-            password: 'test', // 数据库密码
-            database: 'db1', // 数据库名称
-            //prefix: 'api_', // 默认"api_"
-            dialectOptions: { // MySQL > 5.5，其它数据库删除此项
-                charset: 'utf8mb4',
-                //collate: 'utf8mb4_unicode_520_ci',
-                supportBigNumbers: true,
-                bigNumberStrings: true,
-                //requestTimeout: 60 * 1000 //设置连接超时时间
-            },
-            pool: {
-                max: 50, // 连接池中最大连接数量
-                min: 0, // 连接池中最小连接数量
-                idle: 10000 // 如果一个线程 10 秒钟内没有被使用过的话，那么就释放线程
-            }
+        DB_type: 'mysql', // 数据库类型
+        dbName: 'webDB', //命名为唯一 调用的时候
+        host: '192.168.0.220', // 服务器地址
+        port: 3306, // 数据库端口号
+        username: 'root', // 数据库用户名
+        password: 'scrh123456', // 数据库密码
+        database: 'web_test_db', // 数据库名称
+        //prefix: 'api_', // 默认"api_"
+        dialectOptions: { // MySQL > 5.5，其它数据库删除此项
+            charset: 'utf8mb4',
+            //collate: 'utf8mb4_unicode_520_ci',
+            supportBigNumbers: true,
+            bigNumberStrings: true,
+            //requestTimeout: 60 * 1000 //设置连接超时时间
         },
-        {
-            DB_type: 'mysql', // 数据库类型
-            dbName: 'db2', //命名为唯一 调用的时候
-            host: '192.168.0.1', // 服务器地址
-            port: 3306, // 数据库端口号
-            username: 'test', // 数据库用户名
-            password: 'test', // 数据库密码
-            database: 'db2', // 数据库名称
-            //prefix: 'api_', // 默认"api_"
-            dialectOptions: { // MySQL > 5.5，其它数据库删除此项
-                charset: 'utf8mb4',
-                //collate: 'utf8mb4_unicode_520_ci',
-                supportBigNumbers: true,
-                bigNumberStrings: true,
-                //requestTimeout: 60 * 1000 //设置连接超时时间
-            },
-            pool: {
-                max: 50, // 连接池中最大连接数量
-                min: 0, // 连接池中最小连接数量
-                idle: 10000 // 如果一个线程 10 秒钟内没有被使用过的话，那么就释放线程
-            }
+        pool: {
+            max: 50, // 连接池中最大连接数量
+            min: 0, // 连接池中最小连接数量
+            idle: 10000 // 如果一个线程 10 秒钟内没有被使用过的话，那么就释放线程
         }
-    ],
+    }],
     mongoConf: {
         host: 'mongodb://localhost', // 服务器地址
         port: 27017, // 数据库端口号
