@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2018-11-22 13:40:18
+Date: 2018-11-22 15:18:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,44 +20,44 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `admin_base`;
 CREATE TABLE `admin_base` (
-  `AdminId` int(11) NOT NULL AUTO_INCREMENT,
-  `AdminName` varchar(64) DEFAULT NULL,
-  `Account` varchar(64) DEFAULT NULL,
-  `Password` varchar(64) DEFAULT NULL,
-  `Status` int(11) DEFAULT NULL,
-  `IsAdmin` int(11) DEFAULT NULL,
-  `Avatar` varchar(64) DEFAULT NULL,
-  `RoleID` int(11) DEFAULT NULL,
-  `IsDelete` int(11) DEFAULT NULL,
-  `CreatedTime` int(11) DEFAULT NULL,
-  `UpdatedTime` int(11) DEFAULT NULL,
-  PRIMARY KEY (`AdminId`)
-) ENGINE=InnoDB AUTO_INCREMENT=1541755840 DEFAULT CHARSET=utf8mb4;
+  `adminId` bigint(32) NOT NULL AUTO_INCREMENT,
+  `adminName` varchar(64) NOT NULL,
+  `account` varchar(64) NOT NULL,
+  `password` varchar(64) NOT NULL,
+  `status` int(2) DEFAULT NULL,
+  `isAdmin` int(11) DEFAULT NULL,
+  `avatar` varchar(64) DEFAULT NULL,
+  `roleId` int(32) DEFAULT NULL,
+  `isDelete` int(2) DEFAULT NULL,
+  `createdTime` int(16) NOT NULL DEFAULT '1542869595',
+  `updatedTime` int(16) NOT NULL DEFAULT '1542869595',
+  PRIMARY KEY (`adminId`)
+) ENGINE=InnoDB AUTO_INCREMENT=1002 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of admin_base
 -- ----------------------------
-INSERT INTO `admin_base` VALUES ('1541755836', '超级管理员', 'admin', '85a0f2436642feeea9f909ac2a0bea6f', '0', '1', null, null, null, null, null);
-INSERT INTO `admin_base` VALUES ('1541755837', '测试一号', 'test', '85a0f2436642feeea9f909ac2a0bea6f', null, null, null, '1542446864', null, '1541755466', '1541755466');
+INSERT INTO `admin_base` VALUES ('1000', '狼宇先生', 'admin', 'b4cd231d652b3772062e437c3a0c7d00', null, '1', null, null, null, '1542869595', '1542869595');
+INSERT INTO `admin_base` VALUES ('1001', '测试人员', 'test1', 'b4cd231d652b3772062e437c3a0c7d00', null, null, null, '1542870969', null, '1542870946', '1542870946');
 
 -- ----------------------------
 -- Table structure for `permission`
 -- ----------------------------
 DROP TABLE IF EXISTS `permission`;
 CREATE TABLE `permission` (
-  `PermissionID` int(11) NOT NULL AUTO_INCREMENT,
-  `PermissionName` varchar(64) DEFAULT NULL,
-  `PermissionType` bigint(11) DEFAULT '1',
-  `PermissionValue` int(11) DEFAULT NULL,
-  `ParentID` int(11) DEFAULT NULL,
-  `Path` varchar(255) DEFAULT NULL,
-  `Component` varchar(255) DEFAULT NULL,
-  `Meta` varchar(255) DEFAULT NULL,
-  `IsDelete` tinyint(1) DEFAULT NULL,
-  `CreatedTime` int(11) DEFAULT '1542174930',
-  `UpdatedTime` int(11) DEFAULT '1542174930',
-  PRIMARY KEY (`PermissionID`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
+  `permissionId` bigint(32) NOT NULL AUTO_INCREMENT,
+  `permissionName` varchar(64) NOT NULL,
+  `permissionType` int(2) NOT NULL DEFAULT '1',
+  `permissionValue` varchar(255) DEFAULT NULL,
+  `parentId` bigint(32) DEFAULT NULL,
+  `path` varchar(255) DEFAULT NULL,
+  `component` varchar(255) DEFAULT NULL,
+  `meta` varchar(255) DEFAULT NULL,
+  `isDelete` int(2) DEFAULT NULL,
+  `createdTime` int(16) NOT NULL DEFAULT '1542869595',
+  `updatedTime` int(16) NOT NULL DEFAULT '1542869595',
+  PRIMARY KEY (`permissionId`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of permission
@@ -74,33 +74,30 @@ INSERT INTO `permission` VALUES ('15', '总代理列表', '1', '21', '14', 'gene
 -- ----------------------------
 DROP TABLE IF EXISTS `roles_auth`;
 CREATE TABLE `roles_auth` (
-  `RoleID` int(11) NOT NULL,
-  `PermissionID` int(11) NOT NULL,
-  `CreatedTime` int(11) DEFAULT NULL,
-  PRIMARY KEY (`PermissionID`,`RoleID`)
+  `roleId` bigint(32) NOT NULL,
+  `permissionId` bigint(32) NOT NULL,
+  `createdTime` int(16) NOT NULL DEFAULT '1542869595',
+  PRIMARY KEY (`roleId`,`permissionId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of roles_auth
 -- ----------------------------
-INSERT INTO `roles_auth` VALUES ('1542446864', '10', '1542446223');
-INSERT INTO `roles_auth` VALUES ('1542446864', '12', '1542446223');
-INSERT INTO `roles_auth` VALUES ('1542446864', '13', '1542446223');
 
 -- ----------------------------
 -- Table structure for `roles_base`
 -- ----------------------------
 DROP TABLE IF EXISTS `roles_base`;
 CREATE TABLE `roles_base` (
-  `RoleID` int(11) NOT NULL AUTO_INCREMENT,
-  `RoleName` varchar(32) DEFAULT NULL,
-  `IsDelete` int(11) DEFAULT NULL,
-  `CreatedTime` int(11) DEFAULT NULL,
-  `UpdatedTime` int(11) DEFAULT NULL,
-  PRIMARY KEY (`RoleID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2147483648 DEFAULT CHARSET=utf8mb4;
+  `roleId` bigint(32) NOT NULL AUTO_INCREMENT,
+  `roleName` varchar(32) NOT NULL,
+  `isDelete` int(2) DEFAULT NULL,
+  `createdTime` int(16) NOT NULL DEFAULT '1542869595',
+  `updatedTime` int(16) NOT NULL DEFAULT '1542869595',
+  PRIMARY KEY (`roleId`)
+) ENGINE=InnoDB AUTO_INCREMENT=1542870970 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of roles_base
 -- ----------------------------
-INSERT INTO `roles_base` VALUES ('1542446864', '测试人员', null, '1542446223', '1542446223');
+INSERT INTO `roles_base` VALUES ('1542870969', '测试', null, '1542870946', '1542870946');

@@ -23,11 +23,6 @@ module.exports = class LoginService {
      */
     async aminLogin({ account, password }) {
         try {
-            webDBUtil.sync({ force: true }).then(function(result) {
-                console.log(result);
-                // 同步了'Role'、'UserRole'、'UserRole'三个模型
-            });
-
             if (!account && !password) return result.paramsLack();
             const userInfo = await AdminBaseModel.findOne({
                 where: { account, password: Utils.getMd5(password) },

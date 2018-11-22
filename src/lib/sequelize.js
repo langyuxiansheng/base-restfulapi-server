@@ -25,5 +25,11 @@ DB.relationalConfs.forEach(item => {
     }
 });
 
+//同步数据库模型专用 此操作将会删除数据库的表重新创建,请谨慎使用
+/* webDBUtil.sync({ force: true }).then(function(result) {
+    console.log(result);
+    // 同步了'Role'、'UserRole'、'UserRole'三个模型
+}); */
+
 //配置关系型数据库ORM
 export default Object.assign(Sequelize, mysqls);

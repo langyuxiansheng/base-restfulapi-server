@@ -55,7 +55,7 @@ module.exports = class PlatformService {
                 where: { account, isDelete: null }
             });
             if (hasAdmin) return result.failed(`此用户已存在!`);
-            AdminBaseModel.create({ account, adminName, password: Utils.GetMd5(password) });
+            AdminBaseModel.create({ account, adminName, password: Utils.getMd5(password) });
             return result.success();
         } catch (error) {
             console.log(error)
