@@ -1,9 +1,7 @@
 import Koa2 from 'koa';
 import KoaBody from 'koa-body';
 import KoaStatic from 'koa-static2';
-import {
-    System
-} from './config';
+import { System } from './config';
 import path from 'path';
 import MainRoutes from './routes/main-routes';
 import ErrorRoutesCatch from './middleware/ErrorRoutesCatch';

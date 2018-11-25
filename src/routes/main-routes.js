@@ -8,7 +8,8 @@ const {
     Demos,
     Users,
     Login,
-    Admin
+    Admin,
+    Files
 } = controllers;
 
 const routers = [{
@@ -30,6 +31,10 @@ const routers = [{
     {
         url: `/permission`,
         routes: Admin.PermissionController
+    },
+    {
+        url: `/files`,
+        routes: Files.FileController
     }
 ];
 

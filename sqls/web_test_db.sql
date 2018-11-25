@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 内网数据库
-Source Server Version : 50720
-Source Host           : 192.168.0.220:3306
+Source Server         : 本地数据库
+Source Server Version : 50714
+Source Host           : localhost:3306
 Source Database       : web_test_db
 
 Target Server Type    : MYSQL
-Target Server Version : 50720
+Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2018-11-22 15:18:03
+Date: 2018-11-24 19:26:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -66,8 +66,6 @@ INSERT INTO `permission` VALUES ('10', '系统设置', '1', '60', '0', '/system'
 INSERT INTO `permission` VALUES ('11', '权限管理', '1', '61', '10', 'permission', 'Permission', '{\"requireAuth\":false,\"title\":\"权限管理\",\"icon\":null}', null, '1542446223', '1542446223');
 INSERT INTO `permission` VALUES ('12', '角色管理', '1', '62', '10', 'roleManage', 'RoleManage', '{\"requireAuth\":false,\"title\":\"角色管理\",\"icon\":null}', null, '1542446223', '1542446223');
 INSERT INTO `permission` VALUES ('13', '管理员管理', '1', '63', '10', 'adminManage', 'AdminManage', '{\"requireAuth\":false,\"title\":\"管理员管理\",\"icon\":null}', null, '1542446223', '1542446223');
-INSERT INTO `permission` VALUES ('14', '代理商管理', '1', '20', '0', '/agent', 'Layout', '{\"requireAuth\":false,\"title\":\"代理商管理\",\"icon\":\"fa fa-sitemap\"}', null, '1542446223', '1542446223');
-INSERT INTO `permission` VALUES ('15', '总代理列表', '1', '21', '14', 'generalAgents', 'GeneralAgents', '{\"requireAuth\":false,\"title\":\"总代理列表\",\"icon\":null}', null, '1542466843', '1542466843');
 
 -- ----------------------------
 -- Table structure for `roles_auth`

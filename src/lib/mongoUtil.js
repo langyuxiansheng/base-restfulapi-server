@@ -273,23 +273,14 @@ class MongoDBTool {
      * @param {*} limit 每页大小
      * @return {* Array} 返回结果集列表
      */
-    findAndCount({
-        table,
-        filters,
-        attributes,
-        dbName,
-        page,
-        limit
-    }) {
+    findAndCount({ table, filters, attributes, dbName, page, limit }) {
         if (typeof table != 'string') throw new Error('请检查传入的参数是否正确');
         return new Promise((resolve, reject) => {
             this.connect(async(err, db) => {
                 if (err) reject(err);
                 const collection = db.collection(table);
-                let queryData = {
-                        projection: attributes
-                    }
-                    //分页查询
+                let queryData = { projection: attributes };
+                //分页查询
                 if (page && limit) {
                     queryData.skip = Number((page - 1) * limit);
                     queryData.limit = Number(limit);
