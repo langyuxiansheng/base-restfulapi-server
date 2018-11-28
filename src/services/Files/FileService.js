@@ -31,7 +31,7 @@ module.exports = class FileService {
             }
             // ----- 情况2：发送post请求，上传图片 -----
             // 文件将要上传到哪个文件夹下面
-            const uploadfolderpath = path.join(__dirname, '../../assets/uploads');
+            const uploadfolderpath = path.join(__dirname, '../../assets/uploads/tmp');
             const files = request.files;
             console.log(files);
             if (!files.file) return result.paramsLack(`未发现上传文件!`);
@@ -58,7 +58,7 @@ module.exports = class FileService {
             // 保存成功
             console.log('fs.rename done');
             // 拼接url地址
-            let fileUrl = System.API_server_type + System.API_server_host + ':' + System.API_server_port + '/assets/uploads' + filename;
+            let fileUrl = System.API_server_type + System.API_server_host + ':' + System.API_server_port + '/assets/uploads/tmp/' + filename;
             // 返回结果
             return result.success(fileUrl);
         } catch (error) {
