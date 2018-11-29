@@ -23,13 +23,13 @@ module.exports = class LoginService {
      */
     async aminLogin({ account, password, code }, { imgValidateData }) {
         try {
-            if (!account && !password) return result.paramsLack();
+            if (!account || !password || !code) return result.paramsLack();
+            console.log(code, imgValidateData);
+            //if (code !== imgValidateData) return result.failed(`验证码错误!`);
             const userInfo = await AdminBaseModel.findOne({
                 where: { account, password: Utils.getMd5(password) },
                 raw: true
             });
-
-            console.log(imgValidateData);
 
             if (userInfo) {
                 const { adminId, adminName, account, isAdmin, isDelete, status, roleId } = userInfo;

@@ -14,7 +14,7 @@ class CommonController {
      */
     async getImgValidate(ctx) {
         const { text, result } = await CommonService.getImgValidate(ctx);
-        ctx.session.imgValidateData = { text };
+        ctx.session.imgValidateData = text;
         ctx.body = result;
     }
 }
