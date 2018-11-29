@@ -9,7 +9,8 @@ const {
     Users,
     Login,
     Admin,
-    Files
+    Files,
+    Common
 } = controllers;
 
 const routers = [{
@@ -35,6 +36,10 @@ const routers = [{
     {
         url: `/files`,
         routes: Files.FileController
+    },
+    {
+        url: `/common`,
+        routes: Common.CommonController
     }
 ];
 

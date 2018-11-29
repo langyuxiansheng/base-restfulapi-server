@@ -1,13 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 import result from '../../tools/Result';
-import Utils from '../../tools/Utils';
-import sequelize from '../../lib/sequelize';
-import middleware from '../../middleware';
+// import Utils from '../../tools/Utils';
+// import sequelize from '../../lib/sequelize';
+// import middleware from '../../middleware';
 import { System } from '../../config';
 /* eslint-disable */
-const { webDBUtil, Sequelize } = sequelize;
-const AdminBaseModel = webDBUtil.import('../../models/AdminPlatform/AdminBaseModel');
+// const { webDBUtil, Sequelize } = sequelize;
+// const AdminBaseModel = webDBUtil.import('../../models/AdminPlatform/AdminBaseModel');
 /* eslint-endble */
 
 /**

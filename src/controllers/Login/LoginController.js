@@ -14,7 +14,7 @@ class LoginController {
      * @param {*} ctx
      */
     async aminLogin(ctx) {
-        ctx.body = await LoginService.aminLogin(ctx.request.body);
+        ctx.body = await LoginService.aminLogin(ctx.request.body, ctx.session);
     }
 }
 

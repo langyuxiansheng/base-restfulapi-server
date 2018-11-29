@@ -18,16 +18,18 @@ const validateTools = new ValidateTools();
 module.exports = class LoginService {
 
     /**
-     * 用户登录 后台账号
+     * 用户登录
      * @param {*} user
      */
-    async aminLogin({ account, password }) {
+    async aminLogin({ account, password, code }, { imgValidateData }) {
         try {
             if (!account && !password) return result.paramsLack();
             const userInfo = await AdminBaseModel.findOne({
                 where: { account, password: Utils.getMd5(password) },
                 raw: true
             });
+
+            console.log(imgValidateData);
 
             if (userInfo) {
                 const { adminId, adminName, account, isAdmin, isDelete, status, roleId } = userInfo;

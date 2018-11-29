@@ -137,7 +137,7 @@ module.exports = class PermissionService {
     async updatePermission({ permissionId, data }) {
         try {
             const { permissionName, meta } = data;
-            if (!permissionName || !permissionId) return result.paramsLack();
+            if (!permissionName && !permissionId) return result.paramsLack();
             PermissionModel.update({
                 ...data,
                 meta: JSON.stringify(meta)

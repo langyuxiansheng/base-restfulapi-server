@@ -8,3 +8,4 @@ selenium-debug.log
 .idea/
 /assets/uploads/tmp
 /package-lock.json
+/logs/*.log

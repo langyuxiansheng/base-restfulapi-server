@@ -1,4 +1,5 @@
 import path from 'path';
+import Utils from './tools/Utils';
 
 // 系统配置
 export const System = {
@@ -10,7 +11,22 @@ export const System = {
     HTTP_server_port: '65534', // HTTP服务器端口号
     System_country: 'zh-cn', // 所在国家的国家代码
     System_plugin_path: path.join(__dirname, './plugins'), // 插件路径
-    Session_Key: 'RESTfulAPI', // 生产环境务必随机设置一个值
+    Session_Config: {
+        /** 默认 生产环境务必随机设置一个值 */
+        key: Utils.getTimeStampUUID(),
+        /*  cookie的过期时间        【需要修改】  */
+        maxAge: 10000,
+        /** (boolean) can overwrite or not (default true)    没有效果，默认 */
+        overwrite: true,
+        /**  true表示只有服务器端可以获取cookie */
+        httpOnly: true,
+        /** 默认 签名 */
+        signed: true,
+        /** 在每次请求时强行设置 cookie，这将重置 cookie 过期时间（默认：false） 【需要修改】 */
+        rolling: true,
+        /** (boolean) renew session when session is nearly expired      【需要修改】*/
+        renew: false,
+    }
 };
 
 //数据库配置
