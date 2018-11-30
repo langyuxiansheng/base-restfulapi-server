@@ -26,7 +26,6 @@ module.exports = class LoginService {
             if (!account || !password || !code) return result.paramsLack();
             //校验验证码
             if (code && imgValidateData && (code.toLowerCase() !== imgValidateData.toLowerCase())) {
-                console.log(code, imgValidateData);
                 return result.failed(`验证码错误!`);
             }
             //查询用户信息
