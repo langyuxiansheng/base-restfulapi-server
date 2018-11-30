@@ -14,7 +14,8 @@ class CommonController {
      */
     async getImgValidate(ctx) {
         const { text, result } = await CommonService.getImgValidate(ctx);
-        ctx.session.imgValidateData = text;
+        //设置验证码
+        ctx.cookies.set('imgValidateData', text, { httpOnly: true, maxAge: 1000 * 60 * 5 });
         ctx.body = result;
     }
 }

@@ -14,7 +14,8 @@ class LoginController {
      * @param {*} ctx
      */
     async aminLogin(ctx) {
-        ctx.body = await LoginService.aminLogin(ctx.request.body, ctx.session);
+        const imgValidateData = ctx.cookies.get('imgValidateData');
+        ctx.body = await LoginService.aminLogin(ctx.request.body, { imgValidateData });
     }
 }
 

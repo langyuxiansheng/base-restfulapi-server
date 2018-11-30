@@ -1,7 +1,6 @@
 import Koa2 from 'koa';
 import KoaBody from 'koa-body';
 import KoaStatic from 'koa-static2';
-import KoaSession from 'koa-session';
 import path from 'path';
 import jwt from 'koa-jwt';
 import fs from 'fs';
@@ -49,7 +48,6 @@ app.use((ctx, next) => {
         //无需jwt的路由
         path: [/^\/v1\/login\/aminLogin/, /^\/public/, /^\/assets/, /^\/v1\/common\/getImgValidate/]
     }))
-    .use(KoaSession(System.Session_Config, app))
     .use(KoaBody({
         multipart: true,
         strict: false,

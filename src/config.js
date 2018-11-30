@@ -15,7 +15,7 @@ export const System = {
         /** 默认 生产环境务必随机设置一个值 */
         key: Utils.getTimeStampUUID(),
         /*  cookie的过期时间        【需要修改】  */
-        maxAge: 10000,
+        maxAge: 1000 * 60 * 5,
         /** (boolean) can overwrite or not (default true)    没有效果，默认 */
         overwrite: true,
         /**  true表示只有服务器端可以获取cookie */

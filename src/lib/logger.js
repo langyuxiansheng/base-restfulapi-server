@@ -24,8 +24,8 @@ const baseInfo = {
     appLogLevel: 'debug',
     dir: 'logs',
     env: 'dev',
-    projectName: 'koa2-tutorial',
-    serverIp: '0.0.0.0'
+    projectName: 'base-restfulapi-server',
+    serverIp: '127.0.0.1'
 };
 const { env, appLogLevel, dir, serverIp, projectName } = baseInfo;
 // 增加常量，用来存储公用的日志信息
@@ -59,7 +59,6 @@ module.exports = () => {
 
     return async(ctx, next) => {
         const start = Date.now();
-
         log4js.configure(config);
         methods.forEach((method, i) => {
             contextLogger[method] = (message) => {
@@ -70,8 +69,6 @@ module.exports = () => {
         ctx.log = contextLogger;
         await next();
         const responseTime = Date.now() - start;
-        logger.info(access(ctx, {
-            responseTime: `响应时间为${responseTime / 1000}s`
-        }, commonInfo));
+        logger.info(access(ctx, { responseTime: `响应时间为${responseTime / 1000}s` }, commonInfo));
     };
 };

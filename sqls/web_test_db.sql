@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2018-11-24 19:26:54
+Date: 2018-11-30 18:53:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,13 +32,14 @@ CREATE TABLE `admin_base` (
   `createdTime` int(16) NOT NULL DEFAULT '1542869595',
   `updatedTime` int(16) NOT NULL DEFAULT '1542869595',
   PRIMARY KEY (`adminId`)
-) ENGINE=InnoDB AUTO_INCREMENT=1002 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1003 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of admin_base
 -- ----------------------------
 INSERT INTO `admin_base` VALUES ('1000', '狼宇先生', 'admin', 'b4cd231d652b3772062e437c3a0c7d00', null, '1', null, null, null, '1542869595', '1542869595');
 INSERT INTO `admin_base` VALUES ('1001', '测试人员', 'test1', 'b4cd231d652b3772062e437c3a0c7d00', null, null, null, '1542870969', null, '1542870946', '1542870946');
+INSERT INTO `admin_base` VALUES ('1002', '天芒', '123456', 'b4cd231d652b3772062e437c3a0c7d00', null, null, null, null, null, '1543505323', '1543505323');
 
 -- ----------------------------
 -- Table structure for `permission`
@@ -57,7 +58,7 @@ CREATE TABLE `permission` (
   `createdTime` int(16) NOT NULL DEFAULT '1542869595',
   `updatedTime` int(16) NOT NULL DEFAULT '1542869595',
   PRIMARY KEY (`permissionId`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of permission

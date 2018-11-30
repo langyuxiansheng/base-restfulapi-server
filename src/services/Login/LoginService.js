@@ -24,8 +24,12 @@ module.exports = class LoginService {
     async aminLogin({ account, password, code }, { imgValidateData }) {
         try {
             if (!account || !password || !code) return result.paramsLack();
-            console.log(code, imgValidateData);
-            //if (code !== imgValidateData) return result.failed(`验证码错误!`);
+            //校验验证码
+            if (code && imgValidateData && (code.toLowerCase() !== imgValidateData.toLowerCase())) {
+                console.log(code, imgValidateData);
+                return result.failed(`验证码错误!`);
+            }
+            //查询用户信息
             const userInfo = await AdminBaseModel.findOne({
                 where: { account, password: Utils.getMd5(password) },
                 raw: true
