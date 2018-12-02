@@ -24,7 +24,7 @@ module.exports = class LoginService {
     async aminLogin({ account, password, code }, { imgValidateData }) {
         try {
             if (!account || !password || !code || !imgValidateData) return result.paramsLack();
-            console.log(code, imgValidateData);
+            // console.log(code, imgValidateData);
             //校验验证码
             if (String(code).toLowerCase() !== String(imgValidateData).toLowerCase()) {
                 return result.failed(`验证码错误!`);
