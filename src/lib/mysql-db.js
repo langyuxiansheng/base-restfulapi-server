@@ -2,10 +2,7 @@
  * MySQL连接池工具
  */
 import mysql from 'mysql';
-import {
-    DB
-} from '../config';
-
+import { DB } from '../config';
 class DBUtil {
 
     /**
