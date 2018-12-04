@@ -77,16 +77,16 @@ class Result {
      * @param {*} code
      * @param {*} data
      * @param {*} total
-     * @param {*} limit
      * @param {*} page
+     * @param {*} limit
      */
-    pageData(msg, code, data, total, limit, page) {
+    pageData(msg, code, data, total, page, limit) {
         return {
             code: code || this.CODE.SUCCESS,
             data,
             total,
-            limit,
             page,
+            limit,
             msg: msg || this.MESSAGE.SUCCESS
         };
     }

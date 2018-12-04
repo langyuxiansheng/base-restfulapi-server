@@ -39,7 +39,7 @@ class TestService {
             const res = await mongoUtil.findAndCount(queryData);
             //获取总条数
             const count = await mongoUtil.getAllCount(queryData);
-            return result.pageData(null, null, res, count, queryData.limit, queryData.page);
+            return result.pageData(null, null, res, count, queryData.page, queryData.limit);
         } catch (error) {
             console.log(error);
             return result.failed();

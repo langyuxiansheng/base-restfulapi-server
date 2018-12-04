@@ -23,6 +23,16 @@ localhost:3000/v1/login/aminLogin
 ```
 **PS:返回状态码code 成功统一为 200 一般错误为400, 身份验证失败401, 权限问题为403等 附带错误消息 msg**
 
+所有需要jwt的接口
+需要在请求头里 加上Authorization: "Bearer jwt字符串"
+
+例如:
+
+```
+headers:{
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImFkbWluSWQiOiIxMDAwIiwiYWRtaW5OYW1lIjoi54u85a6H5YWI55SfIiwiYWNjb3VudCI6ImFkbWluIiwiaXNBZG1pbiI6MSwicm9sZUlkIjpudWxsfSwiaWF0IjoxNTQzOTI5NjQzLCJleHAiOjE1NDQwMTYwNDN9._WhuklF_mNRWjphj-xpraYGpjqu0Woo3SXHmV48N-Vs"
+}
+```
 ---
 
 #### 1 登录相关
@@ -77,3 +87,141 @@ code     | ture | string | 验证码  |
 }
 
 ```
+
+#### 2 公共服务API类
+
+**2.1 获取图形验证码接口**
+
+###### URL
+> [/common/getImgValidate](/common/getImgValidate)
+
+###### 支持格式
+> JSON
+
+###### HTTP请求方式
+> GET
+
+###### 请求参数
+> 无
+
+###### 请求示例
+
+```
+http://localhost:3000/v1/common/getImgValidate
+```
+
+###### 返回数据
+
+```
+{
+    "code": 200,
+    "data": "<svg>返回的svg图片</svg>",
+    "msg": "SUCCESS"
+}
+
+```
+
+#### 3 系统管理相关
+
+**3.1 分页获取管理员列表**
+
+###### URL
+> [/platform/getPlatformAdminList](/platform/getPlatformAdminList)
+
+###### 支持格式
+> JSON
+
+###### HTTP请求方式
+> GET
+
+###### 请求参数
+> 必须jwt
+
+参数     | 必选  | 类型  | 说明     |
+---      |---    |---    |---
+page     | false | int   | 页码索引 |
+limit    | false | int   | 每页大小 |
+
+###### 请求示例
+
+```
+ http://localhost:3000/v1/platform/getPlatformAdminList?page=1&limit=10
+```
+
+###### 返回数据
+
+```
+{
+    "code": 200,
+    "data": [
+        {
+            "adminId": "1000",  //管理员id
+            "adminName": "狼宇先生",    //管理员名字
+            "account": "admin",     //管理员账号
+            "status": null,     //账号状态
+            "isAdmin": 1,   //是否超级管理员 1是 null或其它都不是 (原则上一个平台只允许一个超级管理员)
+            "avatar": null, //管理员头像
+            "roleId": null, //角色ID
+            "roleName": null    //角色名字
+        },
+        {
+            "adminId": "1001",
+            "adminName": "测试人员",
+            "account": "test1",
+            "status": null,
+            "isAdmin": null,
+            "avatar": null,
+            "roleId": 1542870969,
+            "roleName": "测试"
+        }
+    ],
+    "total": 3, //总大小
+    "page": "1",    //页码索引
+    "limit": "10",  //每页大小
+    "msg": "SUCCESS"
+}
+
+```
+
+**3.2 添加管理员接口**
+
+###### URL
+> [/platform/addPlatformAdmin](/platform/addPlatformAdmin)
+
+###### 支持格式
+> JSON
+
+###### HTTP请求方式
+> POST
+
+###### 请求参数
+
+> 必须jwt
+
+参数       | 必选 | 类型   | 说明       |
+---        |---   |---     |---
+adminName  | ture | string | 管理员名称 |
+account    | ture | string | 账号       |
+password   | ture | string | 密码       |
+
+###### 请求示例
+
+```
+{
+    "adminName": "狼宇先森",
+    "account": "test111",
+    "password": 123456
+}
+```
+
+###### 返回数据
+
+```
+{
+    "code": 200,
+    "msg": "SUCCESS"
+}
+
+```
+
+
