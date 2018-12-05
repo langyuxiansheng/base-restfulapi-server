@@ -89,7 +89,7 @@ module.exports = class PlatformService {
      */
     async updatePlatformAdmin({ adminId, status }) {
         try {
-            if (status === undefined && !adminId) return result.paramsLack();
+            if (status === undefined || !adminId) return result.paramsLack();
             AdminBaseModel.update({
                 status
             }, {

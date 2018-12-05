@@ -37,7 +37,7 @@ headers:{
 
 #### 1 登录相关
 
-**1.1 管理员登录接口**
+**1.0.1 管理员登录接口**
 
 ###### URL
 > [/login/aminLogin](/login/aminLogin)
@@ -85,12 +85,12 @@ code     | ture | string | 验证码  |
     },
     "msg": "SUCCESS"
 }
-
 ```
+---
 
 #### 2 公共服务API类
 
-**2.1 获取图形验证码接口**
+**2.0.1 获取图形验证码接口**
 
 ###### URL
 > [/common/getImgValidate](/common/getImgValidate)
@@ -118,12 +118,11 @@ http://localhost:3000/v1/common/getImgValidate
     "data": "<svg>返回的svg图片</svg>",
     "msg": "SUCCESS"
 }
-
 ```
-
+---
 #### 3 系统管理相关
 
-**3.1 分页获取管理员列表**
+**3.0.1 分页获取管理员列表**
 
 ###### URL
 > [/platform/getPlatformAdminList](/platform/getPlatformAdminList)
@@ -180,10 +179,10 @@ limit    | false | int   | 每页大小 |
     "limit": "10",  //每页大小
     "msg": "SUCCESS"
 }
-
 ```
+---
 
-**3.2 添加管理员接口**
+**3.0.2 添加管理员接口**
 
 ###### URL
 > [/platform/addPlatformAdmin](/platform/addPlatformAdmin)
@@ -221,7 +220,422 @@ password   | ture | string | 密码       |
     "code": 200,
     "msg": "SUCCESS"
 }
+```
+---
+
+**3.0.3 设置平台管理员的角色**
+
+###### URL
+> [/platform/setPlatformAdminRole](/platform/setPlatformAdminRole)
+
+###### 支持格式
+> JSON
+
+###### HTTP请求方式
+> PUT
+
+###### 请求参数
+
+> 必须jwt
+
+参数       | 必选 | 类型   | 说明       |
+---        |---   |---     |---
+adminId    | ture | int    | 管理员ID   |
+roleId     | ture | int    | 角色ID     |
+
+###### 请求示例
 
 ```
+{
+	"adminId":1541755838,
+    "roleId":1541909600
+}
+```
 
+###### 返回数据
+
+```
+{
+    "code": 200,
+    "msg": "SUCCESS"
+}
+```
+---
+
+**3.0.4 修改平台管理员的账号状态**
+
+###### URL
+> [/platform/setPlatformAdminRole/:adminId](/platform/setPlatformAdminRole/:adminId)
+
+###### 支持格式
+> JSON
+
+###### HTTP请求方式
+> PUT
+
+###### 请求参数
+
+> 必须jwt
+
+参数       | 必选 | 类型   | 说明                 |
+---        |---   |---     |---
+adminId    | ture | int    | 管理员ID(路由参数)   |
+status     | ture | int    | 是否禁用             |
+
+###### 请求示例
+
+```
+http://localhost:3000/v1/platform/updatePlatformAdmin/1003
+
+{
+	"status":1  // 1禁用 0启用
+}
+```
+
+###### 返回数据
+
+```
+{
+    "code": 200,    //失败 code:400,msg:"操作失败!"
+    "msg": "SUCCESS"
+}
+```
+---
+
+**3.0.5 注销平台管理员账号**
+
+###### URL
+> [/platform/delPlatformAdmin/:adminId](/platform/delPlatformAdmin/:adminId)
+
+###### 支持格式
+> JSON
+
+###### HTTP请求方式
+> DELETE
+
+###### 请求参数
+
+> 必须jwt
+
+参数       | 必选 | 类型   | 说明                 |
+---        |---   |---     |---
+adminId    | ture | int    | 管理员ID(路由参数)   |
+
+###### 请求示例
+
+```
+http://localhost:3000/v1/platform/delPlatformAdmin/1003
+```
+
+###### 返回数据
+
+```
+{
+    "code": 200,    //失败 code:400,msg:"操作失败!"
+    "msg": "SUCCESS"
+}
+```
+---
+
+**3.0.6 分页获取平台角色列表**
+
+###### URL
+> [/platform/getPlatformRoles](/platform/getPlatformRoles)
+
+###### 支持格式
+> JSON
+
+###### HTTP请求方式
+> GET
+
+###### 请求参数
+> 必须jwt
+
+参数     | 必选  | 类型  | 说明     |
+---      |---    |---    |---
+page     | false | int   | 页码索引 |
+limit    | false | int   | 每页大小 |
+
+###### 请求示例
+
+```
+http://localhost:3000/v1/platform/getPlatformRoles?page=1&limit=10
+```
+###### 返回数据
+
+```
+{
+    "code": 200,
+    "data": [
+        {
+            "roleId": "1542870969", //角色ID
+            "roleName": "测试"  //角色名称
+        }
+    ],
+    "total": 3, //总大小
+    "page": "1",    //页码索引
+    "limit": "10",  //每页大小
+    "msg": "SUCCESS"
+}
+```
+---
+
+**3.0.7 添加管理平台角色**
+
+###### URL
+> [/platform/addPlatformRole](/platform/addPlatformRole)
+
+###### 支持格式
+> JSON
+
+###### HTTP请求方式
+> POST
+
+###### 请求参数
+
+> 必须jwt
+
+参数       | 必选 | 类型   | 说明       |
+---        |---   |---     |---
+roleName   | ture | string | 角色名称   |
+
+###### 请求示例
+
+```
+{
+	"roleName":"灰太狼"
+}
+```
+
+###### 返回数据
+
+```
+{
+    "code": 200,
+    "msg": "SUCCESS"
+}
+```
+
+**3.0.8 设置角色权限**
+
+###### URL
+> [/platform/setPlatformRolePermission](/platform/setPlatformRolePermission)
+
+###### 支持格式
+> JSON
+
+###### HTTP请求方式
+> PUT
+
+###### 请求参数
+
+> 必须jwt
+
+参数          | 必选 | 类型   | 说明         |
+---           |---   |---     |---
+permissionIds | ture | array  | 权限ID集合   |
+roleId        | ture | int    | 角色ID       |
+
+###### 请求示例
+
+```
+{
+  "permissionIds":[5,7,8,9],
+  "roleId":1541909600
+}
+```
+
+###### 返回数据
+
+```
+{
+    "code": 200,    //失败 code:400,msg:"操作失败!"
+    "msg": "SUCCESS"
+}
+```
+
+---
+
+**3.0.9 删除角色**
+
+###### URL
+> [/platform/delPlatformRole/:roleId](/platform/delPlatformRole/:roleId)
+
+###### 支持格式
+> JSON
+
+###### HTTP请求方式
+> DELETE
+
+###### 请求参数
+
+> 必须jwt
+
+参数       | 必选 | 类型   | 说明               |
+---        |---   |---     |---
+roleId     | ture | int    | 角色ID(路由参数)   |
+
+###### 请求示例
+
+```
+http://localhost:3000/v1/platform/delPlatformRole/1544011007
+```
+
+###### 返回数据
+
+```
+{
+    "code": 200,    //失败 code:400,msg:"操作失败!"
+    "msg": "SUCCESS"
+}
+```
+---
+
+**3.1.0 添加权限**
+
+###### URL
+> [/platform/addPermission](/platform/addPermission)
+
+###### 支持格式
+> JSON
+
+###### HTTP请求方式
+> POST
+
+###### 请求参数
+
+> 必须jwt
+
+参数             | 必选  | 类型      | 说明                    |
+---              |---    |---        |---                      |
+permissionName   | ture  | string    | 权限名称                |
+permissionType   | ture  | int       | 权限类型                |
+permissionValue  | false | int       | 权限排序值              |
+path             | ture  | string    | 路径                    |
+component        | ture  | string    | 组件名称                |
+meta             | ture  | object    | 元值                    |
+meta.requireAuth | ture  | boolean   | 开放权限(默认为false)   |
+meta.title       | ture  | string    | 菜单名称                |
+meta.icon        | false | string    | 菜单图标class           |
+
+###### 请求示例
+
+```
+{
+	"permissionName":"系统设置",
+	"permissionType":"1",       //1 菜单 2 按钮
+	"permissionValue":null,     //权限排序值 越大越往后
+	"parentId":0,               //父级菜单默认为 0
+	"path":"index",             //当前组件的路径
+	"component":"Layout",       //vue组件名称
+	"meta":{
+	    "requireAuth": false,   //默认为false 否则此权限为公共权限
+	    "title": "权限管理",
+	    "icon": "fa fa-bar-chart"   //作为父级菜单时使用
+	}
+}
+```
+
+###### 返回数据
+
+```
+{
+    "code": 200,    //失败 code:400,msg:"操作失败!"
+    "msg": "SUCCESS"
+}
+```
+---
+
+**3.1.1 编辑权限**
+
+###### URL
+> [/platform/updatePermission/:permissionId](/platform/updatePermission/:permissionId)
+
+###### 支持格式
+> JSON
+
+###### HTTP请求方式
+> PUT
+
+###### 请求参数
+
+> 必须jwt
+
+参数             | 必选  | 类型      | 说明                    |
+---              |---    |---        |---                      |
+permissionId     | ture  | int       | 权限ID(路由参数)        |
+permissionName   | ture  | string    | 权限名称                |
+permissionType   | ture  | int       | 权限类型                |
+permissionValue  | false | int       | 权限排序值              |
+path             | ture  | string    | 路径                    |
+component        | ture  | string    | 组件名称                |
+meta             | ture  | object    | 元值                    |
+meta.requireAuth | ture  | boolean   | 开放权限(默认为false)   |
+meta.title       | ture  | string    | 菜单名称                |
+meta.icon        | false | string    | 菜单图标class           |
+
+###### 请求示例
+
+```
+http://localhost:3000/v1/permission/updatePermission/8
+
+{
+	"permissionName":"系统管理",
+	"permissionType":"1",       //1 菜单 2 按钮
+	"permissionValue":null,     //权限排序值 越大越往后
+	"parentId":0,               //父级菜单默认为 0
+	"path":"index",             //当前组件的路径
+	"component":"Layout",       //vue组件名称
+	"meta":{
+	    "requireAuth": false,   //默认为false 否则此权限为公共权限
+	    "title": "权限管理",
+	    "icon": "fa fa-bar-chart"   //作为父级菜单时使用
+	}
+}
+```
+
+###### 返回数据
+
+```
+{
+    "code": 200,    //失败 code:400,msg:"操作失败!"
+    "msg": "SUCCESS"
+}
+```
+---
+
+
+**3.1.2 删除权限**
+
+###### URL
+> [/platform/delPermission/:permissionId](/platform/delPermission/:permissionId)
+
+###### 支持格式
+> JSON
+
+###### HTTP请求方式
+> DELETE
+
+###### 请求参数
+
+> 必须jwt
+
+参数             | 必选  | 类型      | 说明                    |
+---              |---    |---        |---                      |
+permissionId     | ture  | int       | 权限ID(路由参数)        |
+
+###### 请求示例
+
+```
+http://localhost:3000/v1/permission/delPermission/8
+```
+
+###### 返回数据
+
+```
+{
+    "code": 200,    //失败 code:400,msg:"操作失败!"
+    "msg": "SUCCESS"
+}
+```
 

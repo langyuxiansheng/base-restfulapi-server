@@ -37,7 +37,7 @@ class PermissionController {
      * @param {*} ctx
      */
     async delPermission(ctx) {
-        ctx.body = await PermissionService.delPermission(ctx.params.PermissionID);
+        ctx.body = await PermissionService.delPermission(ctx.params.permissionId);
     }
 
     /**
@@ -46,7 +46,7 @@ class PermissionController {
      */
     async updatePermission(ctx) {
         ctx.body = await PermissionService.updatePermission({
-            PermissionID: ctx.params.PermissionID,
+            permissionId: ctx.params.permissionId,
             data: ctx.request.body
         });
     }
@@ -77,12 +77,12 @@ const routers = [{
         acc: addPermission
     },
     {
-        url: `/delPermission/:PermissionID`,
+        url: `/delPermission/:permissionId`,
         method: 'delete',
         acc: delPermission
     },
     {
-        url: `/updatePermission/:PermissionID`,
+        url: `/updatePermission/:permissionId`,
         method: 'put',
         acc: updatePermission
     }

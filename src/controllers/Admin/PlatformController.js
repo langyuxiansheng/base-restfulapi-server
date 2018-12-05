@@ -29,7 +29,7 @@ class PlatformController {
      * @param {*} ctx
      */
     async delPlatformAdmin(ctx) {
-        ctx.body = await PlatformService.delPlatformAdmin(ctx.params.AdminID);
+        ctx.body = await PlatformService.delPlatformAdmin(ctx.params.adminId);
     }
 
     /**
@@ -38,8 +38,8 @@ class PlatformController {
      */
     async updatePlatformAdmin(ctx) {
         ctx.body = await PlatformService.updatePlatformAdmin({
-            AdminID: ctx.params.AdminID,
-            Status: ctx.request.body.Status
+            adminId: ctx.params.adminId,
+            status: ctx.request.body.status
         });
     }
 
@@ -72,7 +72,7 @@ class PlatformController {
      * @param {*} ctx
      */
     async delPlatformRole(ctx) {
-        ctx.body = await PlatformService.delPlatformRole(ctx.params.RoleID);
+        ctx.body = await PlatformService.delPlatformRole(ctx.params.roleId);
     }
 
     /**
@@ -108,12 +108,12 @@ const routers = [{
         acc: addPlatformAdmin
     },
     {
-        url: `/delPlatformAdmin/:AdminID`,
+        url: `/delPlatformAdmin/:adminId`,
         method: 'delete',
         acc: delPlatformAdmin
     },
     {
-        url: `/updatePlatformAdmin/:AdminID`,
+        url: `/updatePlatformAdmin/:adminId`,
         method: 'put',
         acc: updatePlatformAdmin
     },
@@ -133,7 +133,7 @@ const routers = [{
         acc: getPlatformRoles
     },
     {
-        url: `/delPlatformRole/:RoleID`,
+        url: `/delPlatformRole/:roleId`,
         method: 'delete',
         acc: delPlatformRole
     },
