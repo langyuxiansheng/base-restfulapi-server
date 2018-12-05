@@ -1,9 +1,9 @@
 import result from '../../tools/Result';
-import Utils from '../../tools/Utils';
-import sequelize from '../../lib/sequelize';
+// import Utils from '../../tools/Utils';
+// import sequelize from '../../lib/sequelize';
 /* eslint-disable */
-const { webDBUtil, Sequelize } = sequelize;
-const AdminBaseModel = webDBUtil.import('../../models/AdminPlatform/AdminBaseModel');
+// const { webDBUtil, Sequelize } = sequelize;
+// const AdminBaseModel = webDBUtil.import('../../models/AdminPlatform/AdminBaseModel');
 /* eslint-endble */
 
 /**
@@ -12,29 +12,12 @@ const AdminBaseModel = webDBUtil.import('../../models/AdminPlatform/AdminBaseMod
 module.exports = class DemoService {
 
     /**
-     * 获取列表
+     * 获取
      * @param {*} param0
      */
     async getListDemo({ page, limit }) {
         try {
-            let queryData = {
-                where: { IsDelete: null },
-                include: [{
-                    model: RolesBaseModel,
-                    attributes: []
-                }],
-                attributes: ['AdminID', 'AdminName', 'Account', 'Status', 'IsAdmin', 'Avatar', 'RoleID', Sequelize.col('roles_base.RoleName')],
-                raw: true
-            };
-            //分页
-            if (page && limit) {
-                queryData.offset = Number((page - 1) * limit); //开始的数据索引
-                queryData.limit = Number(limit); //每页限制返回的数据条数
-            };
-            //建立关联
-            AdminBaseModel.belongsTo(RolesBaseModel, { foreignKey: 'RoleID' });
-            const { rows, count } = await AdminBaseModel.findAndCount(queryData);
-            return result.pageData(null, null, rows, count, page, limit);
+            return result.pageData(null, null, [], 0, page, limit);
         } catch (error) {
             console.log(error);
             return result.failed();
@@ -42,21 +25,12 @@ module.exports = class DemoService {
     }
 
     /**
-     * 添加平台管理员
+     * 添加
      * @param {*} user
      */
-    async addDemo({ Account, Password, AdminName }) {
+    async addDemo({ param }) {
         try {
-            if (!Account && !Password && !AdminName) return result.paramsLack();
-            const hasAdmin = await AdminBaseModel.findOne({
-                where: { Account, IsDelete: null }
-            });
-            if (hasAdmin) return result.failed(`此用户已存在!`);
-            await AdminBaseModel.create({
-                Account,
-                Password: Utils.GetMd5(Password),
-                AdminName
-            });
+            if (!param) return result.paramsLack();
             return result.success();
         } catch (error) {
             console.log(error)
@@ -65,18 +39,12 @@ module.exports = class DemoService {
     }
 
     /**
-     * 注销平台管理员
+     * 删除
      * @param {*} user
      */
-    async delDemo(AdminID) {
+    async delDemo(id) {
         try {
-            if (!AdminID) return result.paramsLack();
-            await AdminBaseModel.update({
-                IsDelete: true
-            }, {
-                where: { AdminID },
-                fields: ['IsDelete']
-            });
+            if (!id) return result.paramsLack();
             return result.success();
         } catch (error) {
             console.log(error);
@@ -85,18 +53,12 @@ module.exports = class DemoService {
     }
 
     /**
-     * 修改平台管理员账号状态
+     * 修改
      * @param {*} user
      */
-    async updateDemo({ AdminID, Status }) {
+    async updateDemo({ id, param }) {
         try {
-            if (Status === undefined && !AdminID) return result.paramsLack();
-            await AdminBaseModel.update({
-                Status
-            }, {
-                where: { AdminID },
-                fields: ['Status']
-            });
+            if (!id || !param) return result.paramsLack();
             return result.success();
         } catch (error) {
             console.log(error);

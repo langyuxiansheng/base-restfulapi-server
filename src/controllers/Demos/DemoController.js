@@ -9,7 +9,7 @@ const DemoService = new services.Demos.DemoService();
 class DemoController {
 
     /**
-     * 获取列表
+     * 获取
      * @param {*} ctx
      */
     async getListDemo(ctx) {
@@ -29,7 +29,7 @@ class DemoController {
      * @param {*} ctx
      */
     async delDemo(ctx) {
-        ctx.body = await DemoService.delDemo(ctx.params.AdminID);
+        ctx.body = await DemoService.delDemo(ctx.params.id);
     }
 
     /**
@@ -38,8 +38,8 @@ class DemoController {
      */
     async updateDemo(ctx) {
         ctx.body = await DemoService.updateDemo({
-            AdminID: ctx.params.AdminID,
-            Status: ctx.request.body.Status
+            id: ctx.params.id,
+            status: ctx.request.body.status
         });
     }
 }
@@ -63,12 +63,12 @@ const routers = [{
         acc: addDemo
     },
     {
-        url: `/delDemo/:DemoID`,
+        url: `/delDemo/:id`,
         method: 'delete',
         acc: delDemo
     },
     {
-        url: `/updateDemo/:DemoID`,
+        url: `/updateDemo/:id`,
         method: 'put',
         acc: updateDemo
     }

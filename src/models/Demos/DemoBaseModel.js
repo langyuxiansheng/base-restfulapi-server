@@ -7,7 +7,7 @@
 export default (sequelize, DataTypes) => {
     return sequelize.define('demo_base', {
         //示例ID
-        demoID: {
+        demoId: {
             type: DataTypes.BIGINT(32),
             allowNull: false,
             primaryKey: true,
