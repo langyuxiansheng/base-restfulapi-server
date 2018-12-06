@@ -15,6 +15,8 @@
 
 目前暂未加入软件测试模块，下一个版本会加入该功能并提供集成方案。建议自行集成jest。
 
+详细说明看这里 [项目的说明文档](https://github.com/langyuxiansheng/base-restfulapi-server/tree/master/%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3)
+
 引入插件介绍
 ------------
 
