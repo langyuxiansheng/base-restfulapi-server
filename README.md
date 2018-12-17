@@ -201,12 +201,12 @@ Koa的错误拦截中间件，需要配合上面的插件使用：https://github
 
 1.	创建项目。
 
-其它说明:
+参考资料:
 --------------------------------------------------------------
 
-特别鸣谢 https://github.com/yi-ge/koa2-API-scaffold  的作者
+https://github.com/yi-ge/koa2-API-scaffold 一个基于Koa2的轻量级RESTful API Server脚手架。
 
-参考作者提供的基础框架,再次基于框架新增和修改了一些业务逻辑,因为业务需要,集成了多种数据库(MySQL和MongoDB)
+参考基础框架,基于框架新增和修改了一些业务逻辑,因为业务需要,集成了多种数据库(MySQL和MongoDB)
 
 
 关于Redis 的说明
