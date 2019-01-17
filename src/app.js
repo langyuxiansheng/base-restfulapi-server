@@ -5,11 +5,11 @@ import path from 'path';
 import jwt from 'koa-jwt';
 import fs from 'fs';
 import ip from 'ip';
-import { System } from './config';
 import MainRoutes from './routes/main-routes';
 import ErrorRoutesCatch from './middleware/ErrorRoutesCatch';
 import ErrorRoutes from './routes/error-routes';
 import logger from './lib/logger';
+import { System } from './config';
 // import PluginLoader from './lib/PluginLoader';
 const app = new Koa2();
 // const env = process.env.NODE_ENV || 'development'; // Current mode
