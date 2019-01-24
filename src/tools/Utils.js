@@ -201,7 +201,6 @@ class Utils {
         }
         return objClone;
     }
-
 }
 
 module.exports = new Utils();

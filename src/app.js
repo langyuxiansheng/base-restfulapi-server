@@ -12,6 +12,7 @@ import logger from './lib/logger';
 import { System } from './config';
 // import PluginLoader from './lib/PluginLoader';
 const app = new Koa2();
+
 // const env = process.env.NODE_ENV || 'development'; // Current mode
 //读取jwt公钥
 const publicKey = fs.readFileSync(path.join(__dirname, '../publicKey.pub'));
