@@ -12,7 +12,7 @@
     "dependencies": {
         "blueimp-md5": "^2.10.0",
         "ip": "^1.1.5",
-        "jsonwebtoken": "^8.1.0",
+        "jsonwebtoken": "^9.0.0",
         "koa": "^2.3.0",
         "koa-body": "^4.0.4",
         "koa-compose": "^4.0.0",
